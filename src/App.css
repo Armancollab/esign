@@ -1,0 +1,179 @@
+/* App styles for Signature UI */
+#root {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.sig-root {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.sig-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  overflow: hidden;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.sig-header {
+  padding: 20px 20px 0 20px;
+}
+.sig-title {
+  margin: 0;
+  font-size: 28px;
+}
+.sig-subtitle {
+  margin: 6px 0 14px 0;
+  color: #9aa3ad;
+  font-size: 14px;
+}
+
+.sig-canvas-wrap {
+  position: relative;
+  width: 100%;
+  border-top: 1px dashed rgba(255,255,255,0.15);
+  border-bottom: 1px dashed rgba(255,255,255,0.15);
+  background: var(--sig-bg, transparent);
+}
+
+.sig-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: transparent;
+  cursor: crosshair;
+}
+
+.sig-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px;
+  pointer-events: none;
+}
+
+.sig-toolbar {
+  padding: 14px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sig-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.sig-spacer {
+  flex: 1;
+}
+
+.sig-field {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #b8c0c8;
+}
+.sig-field input[type="range"] {
+  width: 140px;
+}
+
+.sig-btn {
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.06);
+  color: inherit;
+}
+.sig-btn:hover { border-color: #646cff; }
+.sig-btn.btn-danger { border-color: #cc5050; }
+.sig-btn.btn-primary { border-color: #5ca0ff; }
+
+.sig-footer {
+  text-align: center;
+  color: #9aa3ad;
+  font-size: 12px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  #root {
+    padding: 12px;
+  }
+
+  .sig-header {
+    padding: 14px 14px 0 14px;
+  }
+  .sig-title {
+    font-size: 22px;
+  }
+  .sig-subtitle {
+    font-size: 13px;
+  }
+
+  .sig-toolbar {
+    padding: 12px 14px 14px 14px;
+    gap: 12px;
+  }
+
+  .sig-row {
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .sig-field {
+    font-size: 12px;
+    gap: 6px;
+    flex: 1 1 48%;
+    min-width: 150px;
+  }
+  .sig-field input[type="range"] {
+    width: 100%;
+  }
+
+  .sig-btn {
+    padding: 10px 12px;
+    font-size: 0.95em;
+  }
+
+  /* Bottom row becomes a fixed bottom action bar on phones */
+  .sig-toolbar .sig-row:last-child {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(20,20,20,0.65) 24%, rgba(20,20,20,0.85) 100%);
+    margin: 0 -14px -14px -14px;
+    padding: 10px 14px 14px 14px;
+    backdrop-filter: blur(8px);
+  }
+  .sig-toolbar .sig-row:last-child .sig-btn {
+    flex: 1 1 calc(50% - 5px);
+  }
+
+  /* Top controls arranged in two columns */
+  .sig-toolbar .sig-row:first-child {
+    gap: 10px;
+  }
+  .sig-toolbar .sig-row:first-child > .sig-btn {
+    flex: 0 0 auto;
+  }
+  .sig-toolbar .sig-row:first-child > .sig-spacer {
+    display: none;
+  }
+  .sig-toolbar .sig-row:first-child > .sig-field {
+    flex: 1 1 calc(50% - 5px);
+  }
+
+  .sig-footer {
+    font-size: 11px;
+  }
+}
