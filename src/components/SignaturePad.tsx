@@ -113,6 +113,16 @@ export default function SignaturePadCanvas() {
 	const [thickness, setThickness] = useState<number>(2.5)
 	const dpr = useDevicePixelRatio()
 
+	// Update ink color when background changes to transparent and using default dark color
+	useEffect(() => {
+		if (backgroundColor === 'transparent' && strokeColor === '#111111') {
+			setStrokeColor('#ffffff')
+		} else if (backgroundColor !== 'transparent' && strokeColor === '#ffffff') {
+			// Revert to dark color when switching from transparent background
+			setStrokeColor('#111111')
+		}
+	}, [backgroundColor, strokeColor])
+
 	const minWidth = useMemo(() => Math.max(0.5, thickness * 0.6), [thickness])
 	const maxWidth = useMemo(() => Math.max(1.5, thickness * 1.6), [thickness])
 
